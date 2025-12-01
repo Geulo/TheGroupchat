@@ -7,23 +7,17 @@
 
 int chat_server_run(void) {
     
-    //creating socket
     int server_fd;
     if (create_socket(&server_fd) < 0) {return 1;} // 1 = socket creation failed
 
-    // Allow port reuse
     if (set_socket_reuse(&server_fd) < 0) {close(server_fd); perror("ERROR CODE: reuse setting failed, function set_socket_reuse"); return 1;} // 1 = reuse setting failed
 
-    
-    // turning server configuration into compiler readable code
-    struct sockaddr_in addr;    //initializing struct to hold server addr config
+    struct sockaddr_in addr; 
     if (configure_address(&addr, 8080) < 0 ){perror("ERROR CODE: function configure_address"); close(server_fd); return 1;}
                             //make 8080 editable outside this
         
-    // binding the socket to the address
     if (bind_socket(&server_fd, &addr) < 0) {close(server_fd); return 1;}
 
-    // start to listen to connections on specificied socket
     if (start_listening(&server_fd, 5) < 0) {close(server_fd); return 1;}
     
 
