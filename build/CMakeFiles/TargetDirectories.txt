@@ -1,0 +1,4 @@
+/Users/rubenpenning/TheGroupchat/build/CMakeFiles/chat_server.dir
+/Users/rubenpenning/TheGroupchat/build/CMakeFiles/chat_client.dir
+/Users/rubenpenning/TheGroupchat/build/CMakeFiles/edit_cache.dir
+/Users/rubenpenning/TheGroupchat/build/CMakeFiles/rebuild_cache.dir
