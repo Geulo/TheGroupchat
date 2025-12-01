@@ -1,1 +1,0 @@
-/usr/bin/cc  -Wall -Wextra -pedantic -g -arch arm64 -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/chat_server.dir/src/main.c.o CMakeFiles/chat_server.dir/src/server.c.o CMakeFiles/chat_server.dir/src/network.c.o CMakeFiles/chat_server.dir/src/config.c.o CMakeFiles/chat_server.dir/src/client_manager.c.o -o chat_server
