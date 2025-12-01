@@ -15,23 +15,36 @@ include_directories(include)
 
 # Server source files
 set(SERVER_SOURCES
-    src/main.c
-    src/server.c
-    src/network.c
-    src/config.c
-    src/client_manager.c
+    src/server/server_main.c
+    src/server/server.c
+    src/server/network.c
+    src/server/config.c
+    src/server/client_manager.c
 )
+
+set(CLIENT_SOURCES
+    src/client/client.c
+    src/client/client_main.c
+    src/client/client_messaging.c
+    src/client/client_network.c
+    src/client/client_session.c
+    src/client/client_ui.c)
 
 # Header files
-set(HEADERS
-    include/server.h
-    include/network.h
-    include/config.h
-    include/client_manager.h
+set(SERVER_HEADERS
+    include/server/server.h
+    include/server/network.h
+    include/server/config.h
+    include/server/client_manager.h
 )
+set(CLIENT_HEADERS
+    include/client/client_messaging.h
+    include/client/client_network.h
+    include/client/client_session.h
+    include/client/client_ui.h)
 
 # Create server executable
-add_executable(chat_server ${SERVER_SOURCES} ${HEADERS})
+add_executable(chat_server ${SERVER_SOURCES} ${SERVER_HEADERS})
 
 # Create client executable
-add_executable(chat_client src/client.c)
+add_executable(chat_client ${CLIENT_SOURCES} ${CLIENT_HEADERS})

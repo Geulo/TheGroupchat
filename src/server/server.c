@@ -1,7 +1,7 @@
-#include "server.h"
-#include "network.h"
-#include "config.h"
-#include "client_manager.h"
+#include "server/server.h"
+#include "server/network.h"
+#include "server/config.h"
+#include "server/client_manager.h"
 #include <stdio.h>
 #include <unistd.h>
 
@@ -31,9 +31,8 @@ int chat_server_run(void) {
     char buf[1024];
 
 
-    // ______LOBBY START____ //
+// accepting clients
 
-    // Setup lobby configuration
     LobbyConfig lobby_config = {
         .server_fd = server_fd,
         .clients = clients,
@@ -44,7 +43,6 @@ int chat_server_run(void) {
         .buf_size = sizeof(buf)
     };
 
-    // Run lobby
     int lobby_count = accept_clients(&lobby_config);
 
     if (lobby_count < 0) {
@@ -52,10 +50,9 @@ int chat_server_run(void) {
     close(server_fd);
     return 1;
     }
- 
-    // ______ LOBBY END ____ //
 
-    // Checking and handling client messaging
+
+// Checking and handling client messaging
 
     ChatConfig chat_config = {
     .clients = clients,

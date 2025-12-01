@@ -1,7 +1,9 @@
-#include "client_UI.h"
+#include "client/client_ui.h"
+#include "client/client.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <termios.h>
 
 void set_raw_mode(struct termios *old_tio) {
     struct termios new_tio;

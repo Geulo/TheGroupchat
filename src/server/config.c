@@ -1,4 +1,4 @@
-#include "config.h"
+#include "server/config.h"
 #include <string.h>
 #include <arpa/inet.h>
 #include <stdio.h>

@@ -1,10 +1,10 @@
-#include "client_network.h"
+#include "client/client_network.h"
 #include <stdio.h>
 #include <string.h>
 #include <unistd.h>
 #include <arpa/inet.h>
 
-int connect_to_server(const char *server_ip, int port) {
+int create_and_connect_socket(const char *server_ip) {
     int sock = socket(AF_INET, SOCK_STREAM, 0);
     if (sock < 0) {
         perror("socket");
@@ -13,15 +13,10 @@ int connect_to_server(const char *server_ip, int port) {
 
     struct sockaddr_in addr;
     addr.sin_family = AF_INET;
-    addr.sin_port = htons(port);
-    
-    if (inet_pton(AF_INET, server_ip, &addr.sin_addr) <= 0) {
-        perror("Invalid address");
-        close(sock);
-        return -1;
-    }
+    addr.sin_port = htons(8080);
+    inet_pton(AF_INET, server_ip, &addr.sin_addr);
 
-    printf("Connecting to %s:%d...\n", server_ip, port);
+    printf("Connecting to %s:8080...\n", server_ip);
 
     if (connect(sock, (struct sockaddr*)&addr, sizeof(addr)) < 0) {
         perror("connect");
@@ -33,14 +28,21 @@ int connect_to_server(const char *server_ip, int port) {
     return sock;
 }
 
-int send_nickname(int sock, const char *nickname) {
-    if (send(sock, nickname, strlen(nickname), 0) < 0) {
-        perror("send nickname");
+int get_and_send_nickname(int sock) {
+    char nickname[32];
+    printf("Enter your nickname: ");
+    fflush(stdout);
+    
+    if (!fgets(nickname, sizeof(nickname), stdin)) {
         return -1;
     }
-    if (send(sock, "\n", 1, 0) < 0) {
-        perror("send newline");
-        return -1;
-    }
+
+    // Remove newline
+    nickname[strcspn(nickname, "\n")] = 0;
+
+    // Send nickname to server
+    send(sock, nickname, strlen(nickname), 0);
+    send(sock, "\n", 1, 0);
+    
     return 0;
 }
