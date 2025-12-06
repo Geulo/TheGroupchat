@@ -1,1 +1,21 @@
+THE GROUPCHAT - Report 
+Topic description
+Our project, The Groupchat, allows connected clients to chat with each other through a TCP server that uses IPv4.
+
+Design choices
+The design choices we had to make throughout this project were shaped by the amount of time we had, our skill in software development, and our ability to understand code. Our main choses consisted of:
+
+The User Interface
+We initially wanted to have our users interact through a separate window that would open, however due to time constraints we were unable to implement this. Therefore, our user interface for the client and server live in the terminal.
+
+Server Types
+The three main types we considered were UDP, TCP and TLS. While each type had their strengths, we ultimately decided on TCP due to several different factors. Our main factors were time and data transfer, which led us to TCP as it requires less code compared to TLS, while still allowing for a consistent and uninterrupted flow of data unlike UDP.
+
+How we handle client connections
+We initially wanted to implement threading to process and allocate client connections, giving the ability for a user to join the server at any point in time as long as the server is running. However, due to the constraint of time, we settled on the design of a lobby, that clients must join the lobby before the server allows clients to chat to each other. 
+
+Contributions:
+The group work was split in a way that was manageable for both members. Since our project consists of a client side and a server side, we split it 50/50. Owen worked on the client side, while Ruben focused on the server side. Ruben also focused on the modularization and organization of the project, while Owen focused on the presentation and report. 
+AI statement
+LLM’s were a crucial part of our project through its ability to explain and help with core logic that our server and clients rely on. This consisted of guiding us through understanding and writing each function that our code uses.
 
