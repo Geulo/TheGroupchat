@@ -8,6 +8,7 @@ Year: **2**
 ## project
 Project type: **Group Project**
 Members: **2**; **Ruben**, **Owen**
+
 Description: Multi-client TCP chat server 
 
 
