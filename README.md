@@ -1,17 +1,18 @@
 # TheGroupchat
 
-
+## backround
 University : **IE UNIVERSITY**
 Course: **C Programming 1**
 Year: **2**
 
+## project
 Project type: **Group Project**
 Members: **2**; **Ruben**, **Owen**
 Description:
 
 
 Grade Recieved = 8.5/10
-## Feedback Recieved :
+### Feedback Recieved :
 
 **Code Quality 3.3/3.5**:
 Very good file separation
